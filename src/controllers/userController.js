@@ -31,7 +31,7 @@ export const postJoin = async (req, res) => {
   } catch (error) {
     return res.status(400).render("join", {
       pageTitle: "Upload Video",
-      errorMessage: error_message,
+      errorMessage: error._message,
     });
   }
 };
@@ -98,7 +98,6 @@ export const finishGithubLogin = async (req, res) => {
         },
       })
     ).json();
-    console.log(userData);
     const emailData = await (
       await fetch(`${apiUrl}/user/emails`, {
         headers: {
@@ -118,6 +117,17 @@ export const finishGithubLogin = async (req, res) => {
       req.session.user = existingUser;
       return res.redirect("/");
     } else {
+      const user = await User.create({
+        name: userData.name,
+        email: emailObj.email,
+        username: userData.login,
+        password: "",
+        socialOnly: true,
+        location: userData.location,
+      });
+      req.session.loggedIn = true;
+      req.session.user = user;
+      return res.redirect("/");
     }
   } else {
     return res.redirect("/login");
