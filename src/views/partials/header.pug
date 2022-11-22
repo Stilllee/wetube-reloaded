@@ -15,11 +15,13 @@ header
                     a(href="/users/logout")  Log Out
                 li
                     a(href=`/users/${loggedInUser._id}`)
-                        if loggedInUser.socialOnly
                         if loggedInUser.avatarUrl === undefined
                             span 😀
                         else
-                            img.header__avatar(src="/" + loggedInUser.avatarUrl)
+                            if loggedInUser.socialOnly 
+                                img.header__avatar(src=loggedInUser.avatarUrl)
+                            else
+                                img.header__avatar(src="/" + loggedInUser.avatarUrl)
             else
                 li
                     a(href="/login")  Login                        

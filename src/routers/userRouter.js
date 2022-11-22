@@ -15,21 +15,21 @@ import {
   avatarUpload,
 } from "../middlewares";
 
-const usersRouter = express.Router();
+const userRouter = express.Router();
 
-usersRouter.get("/logout", protectorMiddleware, logout);
-usersRouter
+userRouter.get("/logout", protectorMiddleware, logout);
+userRouter
   .route("/edit")
   .all(protectorMiddleware)
   .get(getEdit)
   .post(avatarUpload.single("avatar"), postEdit);
-usersRouter
+userRouter
   .route("/change-password")
   .all(protectorMiddleware)
   .get(getChangePassword)
   .post(postChangePassword);
-usersRouter.get("/github/start", publicOnlyMiddleware, startGithubLogin);
-usersRouter.get("/github/finish", publicOnlyMiddleware, finishGithubLogin);
-usersRouter.get("/:id", see);
+userRouter.get("/github/start", publicOnlyMiddleware, startGithubLogin);
+userRouter.get("/github/finish", publicOnlyMiddleware, finishGithubLogin);
+userRouter.get("/:id", see);
 
-export default usersRouter;
+export default userRouter;
