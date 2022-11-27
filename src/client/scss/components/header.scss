@@ -4,8 +4,16 @@ header {
   justify-content: space-between;
   align-items: center;
   .header__logo {
-    color: $red;
+    display: flex;
+    align-items: flex-start;
+    color: $yellow;
     font-size: 38px;
+    span {
+      margin-left: 5px;
+      font-size: 35px;
+      font-weight: 600;
+      text-transform: uppercase;
+    }
   }
   ul {
     display: flex;
