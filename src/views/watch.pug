@@ -21,8 +21,8 @@ block content
                         i.fas.fa-expand
     div.video__data
         p.video__title=video.title
-        p=video.description
-        p=video.hashtags.split(",")          
+        p.video__description=video.description
+        p.video__hashtags=video.hashtags         
         small.video__owner Uploaded by 
             a(href=`/users/${video.owner._id}`)=video.owner.name
         small.video__createdAt=new Date(video.createdAt).toLocaleDateString("ko-kr", {weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'})
