@@ -11,8 +11,8 @@ form {
 
 input:not(input[type="range"]),
 input[type="submit"] {
-  cursor: pointer
   all: unset;
+  cursor: pointer;
   padding: 15px 20px;
   border-radius: 5px;
   border: 1px solid rgba(255, 255, 255, 0.2);
