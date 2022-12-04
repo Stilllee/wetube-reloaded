@@ -102,16 +102,16 @@ const handleMouseLeave = () => {
 };
 
 const handleWithKeyboard = (event) => {
-  if (event.code === "Space") {
-    handlePlayClick();
-  }
-  if (event.key === "m" || event.key === "M") {
-    handleMute();
-  }
-  if (event.key === "f" || event.key === "F") {
-    handleFullScreen();
-  }
-};
+    if(event.target.localName !== "textarea"){
+      if (event.code === "Space") {
+        handlePlayClick();
+      }else if (event.key === "m" || event.key === "M") {
+        handleMute();
+      }else if (event.key === "f" || event.key === "F") {
+        handleFullScreen();
+      };
+    }
+  };
 
 const handleEnded = () => {
   const { id } = videoContainer.dataset;
@@ -131,4 +131,4 @@ fullScreenBtn.addEventListener("click", handleFullScreen);
 videoContainer.addEventListener("mousemove", handleMouseMove);
 videoContainer.addEventListener("mouseleave", handleMouseLeave);
 video.addEventListener("click", handlePlayClick);
-document.addEventListener("keydown", handleWithKeyboard);
+window.addEventListener("keydown", handleWithKeyboard);
